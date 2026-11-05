@@ -1,0 +1,12 @@
+work/
+build/
+__pycache__/
+*.pyc
+*.dll
+*.so
+*.exe
+*.obj
+*.lib
+*.exp
+*.pdb
+*.bsp
