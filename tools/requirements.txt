@@ -1,0 +1,4 @@
+capstone
+numpy
+pyelftools
+unicorn

@@ -1,0 +1,1634 @@
+{
+ "build": "25375506-x86",
+ "modules": {
+  "bin/engine.dll": "91416606D167440A48CCA9E68FFC0898CE350A879DADD074835336C199404DE4",
+  "garrysmod/bin/client.dll": "A1B56FDCB6E70C00241698C45EB145EED77477D8F760320B0A53BFEC330E53E6",
+  "garrysmod/bin/server.dll": "06688DD4C3499170951926A69BE91B6FC77B1DD428E4477566CB2EC6A13BE943"
+ },
+ "sites": [
+  {
+   "id": "P4-01",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101f6150",
+   "len": 8,
+   "new": {
+    "abs32": 4,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "F3 0F 10 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "F3 0F 10 05 ?? ?? ?? ?? 0F 2F 44 06 F4",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 10 05 ?? ?? ?? ?? 0F 2F 44 06 ??",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-02",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101f6164",
+   "len": 7,
+   "new": {
+    "abs32": 3,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "0F 2F 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "F3 0F 10 04 06 0F 2F 05 ?? ?? ?? ?? 76 14",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 10 04 06 0F 2F 05 ?? ?? ?? ?? 76 ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-03",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10425af0",
+   "len": 12,
+   "new": "00 00 00 C7 00 00 00 C7 00 00 00 C7 ",
+   "kind": "ref",
+   "ref_va_gen": "0x101deedc",
+   "data_offset": 0,
+   "orig": "00 00 80 C6 00 00 80 C6 00 00 80 C6",
+   "users_gen": 5,
+   "content_hits": 1,
+   "users_mnem": [
+    "movss",
+    "push",
+    "push",
+    "push",
+    "push"
+   ],
+   "strict": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? 50 F3 0F 11 45 EC",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? 50 F3 0F 11 45 ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-04",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10425afc",
+   "len": 12,
+   "new": "00 00 00 47 00 00 00 47 00 00 00 47 ",
+   "kind": "ref",
+   "ref_va_gen": "0x101deed7",
+   "data_offset": 0,
+   "orig": "00 00 80 46 00 00 80 46 00 00 80 46",
+   "users_gen": 6,
+   "content_hits": 1,
+   "users_mnem": [
+    "movss",
+    "movss",
+    "push",
+    "push",
+    "push",
+    "push"
+   ],
+   "strict": {
+    "sig": "F3 0F 58 45 90 68 ?? ?? ?? ?? 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 58 45 ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-05",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10355f38",
+   "len": 4,
+   "new": "00 F6 FF 46",
+   "kind": "ref",
+   "ref_va_gen": "0x101def9b",
+   "data_offset": 0,
+   "orig": "00 EC 7F 46",
+   "users_gen": 1,
+   "content_hits": 1,
+   "users_mnem": [
+    "movss"
+   ],
+   "strict": {
+    "sig": "F3 0F 10 0D ?? ?? ?? ?? F3 0F 5C C8",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 10 0D ?? ?? ?? ?? F3 0F 5C C8",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-06",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10355f40",
+   "len": 4,
+   "new": "00 F6 FF C6",
+   "kind": "ref",
+   "ref_va_gen": "0x101def88",
+   "data_offset": 0,
+   "orig": "00 EC 7F C6",
+   "users_gen": 3,
+   "content_hits": 1,
+   "users_mnem": [
+    "movss",
+    "movss",
+    "subss"
+   ],
+   "strict": {
+    "sig": "76 55 F3 0F 10 0D ?? ?? ?? ?? EB 11",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "76 ?? F3 0F 10 0D ?? ?? ?? ?? EB ?? 0F 2F 05 ?? ?? ?? ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-07a",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101def7b",
+   "len": 8,
+   "new": {
+    "abs32": 4,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "F3 0F 10 0D ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "76 17 F3 0F 10 0D ?? ?? ?? ?? 0F 2F C8",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "76 ?? F3 0F 10 0D ?? ?? ?? ?? 0F 2F C8",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-07b",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101def92",
+   "len": 7,
+   "new": {
+    "abs32": 3,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "0F 2F 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "EB 11 0F 2F 05 ?? ?? ?? ?? 76 42 F3 0F 10 0D ?? ?? ?? ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "EB ?? 0F 2F 05 ?? ?? ?? ?? 76 ?? F3 0F 10 0D ?? ?? ?? ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-07c",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101df073",
+   "len": 8,
+   "new": {
+    "abs32": 4,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "F3 0F 10 35 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "76 22 F3 0F 10 35 ?? ?? ?? ?? 0F 2F F0",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "76 ?? F3 0F 10 35 ?? ?? ?? ?? 0F 2F F0",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-07d",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101df095",
+   "len": 7,
+   "new": {
+    "abs32": 3,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "0F 2F 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "EB 17 0F 2F 05 ?? ?? ?? ?? 76 48 F3 0F 10 44 0D 90",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "EB ?? 0F 2F 05 ?? ?? ?? ?? 76 ?? F3 0F 10 44 0D ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-08",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101e0955",
+   "len": 5,
+   "new": "B8 00 01 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "B8 80 00 00 00",
+   "strict": {
+    "sig": "03 F0 B8 80 00 00 00 D3 F8 B9 01 00 00 00",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "03 F0 B8 80 00 00 00 D3 F8 B9 ?? ?? ?? ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-09a",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101e0972",
+   "len": 6,
+   "new": "C7 06 00 00 00 C7",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "C7 06 00 00 80 C6",
+   "strict": {
+    "sig": "C7 06 00 00 80 C6 C7 46 04 00 00 80 C6",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "C7 06 00 00 80 C6 C7 46 ?? ?? ?? ?? ??",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-09b",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101e0978",
+   "len": 7,
+   "new": "C7 46 04 00 00 00 C7",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "C7 46 04 00 00 80 C6",
+   "strict": {
+    "sig": "C7 46 04 00 00 80 C6 C7 46 08 00 00 80 C6",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "C7 46 ?? 00 00 80 C6 C7 46 ?? ?? ?? ?? ??",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-09c",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101e097f",
+   "len": 7,
+   "new": "C7 46 08 00 00 00 C7",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "C7 46 08 00 00 80 C6",
+   "strict": {
+    "sig": "C7 46 08 00 00 80 C6 89 8E 10 10 00 00",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "C7 46 ?? 00 00 80 C6 89 8E ?? ?? ?? ??",
+    "ins_off": 0,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-10a",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1013fe12",
+   "len": 2,
+   "new": "6A 0D",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 0C",
+   "strict": {
+    "sig": "F3 0F 10 46 10 8B CF F3 0F 59 C1 6A 0C F3 0F 2C C0 50 E8 ?? ?? ?? ??",
+    "ins_off": 11,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 10 46 ?? 8B CF F3 0F 59 C1 6A 0C F3 0F 2C C0 50 E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ??",
+    "ins_off": 11,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-10b",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1013fe8b",
+   "len": 2,
+   "new": "6A 0D",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 0C",
+   "strict": {
+    "sig": "F3 0F 10 46 14 8B CF F3 0F 59 C1 6A 0C F3 0F 2C C0 50 E8 ?? ?? ?? ??",
+    "ins_off": 11,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 10 46 ?? 8B CF F3 0F 59 C1 6A 0C F3 0F 2C C0 50 E8 ?? ?? ?? ?? 8B 5F ??",
+    "ins_off": 11,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-10c",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1013ff00",
+   "len": 2,
+   "new": "6A 0D",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 0C",
+   "strict": {
+    "sig": "F3 0F 59 05 ?? ?? ?? ?? 6A 0C F3 0F 2C C0",
+    "ins_off": 8,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 59 05 ?? ?? ?? ?? 6A 0C F3 0F 2C C0",
+    "ins_off": 8,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-11a",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101dd40a",
+   "len": 2,
+   "new": "6A 0D",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 0C",
+   "strict": {
+    "sig": "8B 75 08 E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA 05 83 E1 1F 8B 14 90 FF 47 0C D3 EA 83 E2 01 0F 84 ?? ?? ?? ?? 6A 0C 8B CF E8 ?? ?? ?? ?? F3 0F 2A C0 F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA 05 83 E1 1F 8B 14 90 FF 47 0C",
+    "ins_off": 35,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B 75 ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA ?? 83 E1 ?? 8B 14 90 FF 47 ?? D3 EA 83 E2 ?? 0F 84 ?? ?? ?? ?? 6A 0C 8B CF E8 ?? ?? ?? ?? F3 0F 2A C0 F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA ?? 83 E1 ?? 8B 14 90 FF 47 ??",
+    "ins_off": 35,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-11b",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101dd43f",
+   "len": 2,
+   "new": "6A 0D",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 0C",
+   "strict": {
+    "sig": "F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA 05 83 E1 1F 8B 14 90 FF 47 0C D3 EA 83 E2 01 0F 84 ?? ?? ?? ?? 6A 0C 8B CF E8 ?? ?? ?? ?? F3 0F 2A C0 F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA 05 83 E1 1F 8B 14 90 FF 47 0C D3 EA",
+    "ins_off": 40,
+    "hits": 2,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA ?? 83 E1 ?? 8B 14 90 FF 47 ?? D3 EA 83 E2 ?? 0F 84 ?? ?? ?? ?? 6A 0C 8B CF E8 ?? ?? ?? ?? F3 0F 2A C0 F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA ?? 83 E1 ?? 8B 14 90 FF 47 ?? D3 EA",
+    "ins_off": 40,
+    "hits": 2,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-11c",
+   "group": "world-limits",
+   "module": "bin/engine.dll",
+   "va_gen": "0x101dd474",
+   "len": 2,
+   "new": "6A 0D",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 0C",
+   "strict": {
+    "sig": "F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA 05 83 E1 1F 8B 14 90 FF 47 0C D3 EA 83 E2 01 0F 84 ?? ?? ?? ?? 6A 0C 8B CF E8 ?? ?? ?? ?? F3 0F 2A C0 F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA 05 83 E1 1F 8B 14 90 FF 47 0C D3 EA",
+    "ins_off": 40,
+    "hits": 2,
+    "occurrence": 1
+   },
+   "loose": {
+    "sig": "F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA ?? 83 E1 ?? 8B 14 90 FF 47 ?? D3 EA 83 E2 ?? 0F 84 ?? ?? ?? ?? 6A 0C 8B CF E8 ?? ?? ?? ?? F3 0F 2A C0 F3 0F 59 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 8B 07 8B D1 C1 FA ?? 83 E1 ?? 8B 14 90 FF 47 ?? D3 EA",
+    "ins_off": 40,
+    "hits": 2,
+    "occurrence": 1
+   }
+  },
+  {
+   "id": "P4-12",
+   "group": "world-limits",
+   "module": "garrysmod/bin/client.dll",
+   "va_gen": "0x105c8a64",
+   "len": 6,
+   "new": "33 32 37 36 38 00",
+   "kind": "cvar",
+   "cvar": "r_mapextents",
+   "reg": "push",
+   "orig": "31 36 33 38 34 00"
+  },
+  {
+   "id": "P4-14",
+   "group": "world-limits",
+   "module": "garrysmod/bin/client.dll",
+   "va_gen": "0x106c500c",
+   "len": 4,
+   "new": "00 00 00 47",
+   "kind": "ref",
+   "ref_va_gen": "0x100b0b7a",
+   "data_offset": 0,
+   "orig": "00 00 80 46",
+   "users_gen": 10,
+   "content_hits": 7,
+   "users_mnem": [
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss"
+   ],
+   "strict": {
+    "sig": "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? F3 0F 59 05 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? F3 0F 59 05 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-13",
+   "group": "world-limits",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x109a1724",
+   "len": 4,
+   "new": "00 00 00 47",
+   "kind": "ref",
+   "ref_va_gen": "0x1014a23c",
+   "data_offset": 0,
+   "orig": "00 00 80 46",
+   "users_gen": 15,
+   "content_hits": 5,
+   "users_mnem": [
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss",
+    "movss"
+   ],
+   "strict": {
+    "sig": "8B F0 E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? 8B F8 F3 0F 59 05 ?? ?? ?? ??",
+    "ins_off": 7,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B F0 E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? 8B F8 F3 0F 59 05 ?? ?? ?? ??",
+    "ins_off": 7,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-01a",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1026056a",
+   "len": 3,
+   "new": "83 F8 0F",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "83 F8 0E",
+   "strict": {
+    "sig": "8B C6 2B C7 83 F8 0E 7D 0D 89 71 0C",
+    "ins_off": 4,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B C6 2B C7 83 F8 0E 7D ?? 89 71 ??",
+    "ins_off": 4,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-01b",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10260586",
+   "len": 3,
+   "new": "83 C0 0E",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "83 C0 0D",
+   "strict": {
+    "sig": "83 C7 0E 83 C0 0D 89 79 0C C1 F8 05",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 C7 ?? 83 C0 0D 89 79 ?? C1 F8 ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-01c",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10260583",
+   "len": 3,
+   "new": "83 C7 0F",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "83 C7 0E",
+   "strict": {
+    "sig": "8B 45 FC 83 C7 0E 83 C0 0D 89 79 0C",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B 45 ?? 83 C7 0E 83 C0 ?? 89 79 ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-01d",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x102605b9",
+   "len": 6,
+   "new": "81 E2 FF 7F 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "81 E2 FF 3F 00 00",
+   "strict": {
+    "sig": "0B D0 81 E2 FF 3F 00 00 8D 42 01 89 45 E8",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "0B D0 81 E2 FF 3F 00 00 8D 42 ?? 89 45 ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-02a",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10261432",
+   "len": 3,
+   "new": "83 F8 0F",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "83 F8 0E",
+   "strict": {
+    "sig": "8B C7 2B C2 83 F8 0E 7D 09 89 79 0C",
+    "ins_off": 4,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B C7 2B C2 83 F8 0E 7D ?? 89 79 ??",
+    "ins_off": 4,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-02b",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10261440",
+   "len": 3,
+   "new": "8D 42 0F",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "8D 42 0E",
+   "strict": {
+    "sig": "C6 41 10 01 EB 6B 8D 42 0E 8B F2 89 41 0C",
+    "ins_off": 6,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "C6 41 ?? ?? EB ?? 8D 42 ?? 8B F2 89 41 ??",
+    "ins_off": 6,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-02c",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1026144d",
+   "len": 5,
+   "new": "BF FF 3F 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "BF FF 1F 00 00",
+   "strict": {
+    "sig": "8B 01 BF FF 1F 00 00 C1 FA 05 8B CE",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B 01 BF FF 1F 00 00 C1 FA ?? 8B CE",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-02d",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1026148c",
+   "len": 5,
+   "new": "B8 FF 7F 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "B8 FF 3F 00 00",
+   "strict": {
+    "sig": "33 D0 B8 FF 3F 00 00 89 14 B7 8B D1",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "33 D0 B8 FF 3F 00 00 89 14 B7 8B D1",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-03",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10181e1c",
+   "len": 5,
+   "new": "B8 10 00 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "B8 0F 00 00 00",
+   "strict": {
+    "sig": "F6 C1 01 B8 0F 00 00 00 BA 01 00 00 00",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F6 C1 ?? B8 0F 00 00 00 BA ?? ?? ?? ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-04",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x103b0818",
+   "len": 12,
+   "new": "10 00 00 00 06 00 00 00 15 00 00 00",
+   "kind": "ref",
+   "ref_va_gen": "0x102606c1",
+   "data_offset": 4,
+   "orig": "0F 00 00 00 06 00 00 00 14 00 00 00",
+   "users_gen": 2,
+   "users_at_ref": true,
+   "content_hits": 1,
+   "users_mnem": [
+    "mov",
+    "mov"
+   ],
+   "strict": {
+    "sig": "C3 8B 0C 9D ?? ?? ?? ?? 8B C7 2B 45 FC",
+    "ins_off": 1,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "C3 8B 0C 9D ?? ?? ?? ?? 8B C7 2B 45 ??",
+    "ins_off": 1,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-05a",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x102615da",
+   "len": 5,
+   "new": "BF 12 00 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "BF 11 00 00 00",
+   "strict": {
+    "sig": "8D 04 47 BF 11 00 00 00 8D 14 82 B8 0E 00 00 00",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8D 04 47 BF 11 00 00 00 8D 14 82 B8 ?? ?? ?? ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-05b",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x10261613",
+   "len": 3,
+   "new": "C1 E0 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "C1 E0 11",
+   "strict": {
+    "sig": "BF 14 00 00 00 C1 E0 11 C1 E1 0E 81 FE 00 08 00 00",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "BF ?? ?? ?? ?? C1 E0 11 C1 E1 ?? 81 FE ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-05c",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x1026160e",
+   "len": 5,
+   "new": "BF 15 00 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "BF 14 00 00 00",
+   "strict": {
+    "sig": "8B C1 BF 14 00 00 00 C1 E0 11 C1 E1 0E",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "8B C1 BF 14 00 00 00 C1 E0 ?? C1 E1 ??",
+    "ins_off": 2,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-06a",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x102607d4",
+   "len": 5,
+   "new": "BB 10 00 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "BB 0F 00 00 00",
+   "imm_val": 15,
+   "imm_mnem": "mov",
+   "imm_new": 16,
+   "strict": {
+    "sig": "B8 0C 00 00 00 BB 0F 00 00 00 0F 45 D8",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "B8 ?? ?? ?? ?? BB 0F 00 00 00 0F 45 D8",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "fn_sibling": "P5-06b"
+  },
+  {
+   "id": "P5-06b",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x103b0810",
+   "len": 8,
+   "new": "05 05 14 10 03 03 12 0E",
+   "kind": "ref",
+   "ref_va_gen": "0x10260874",
+   "data_offset": 0,
+   "orig": "05 05 13 10 03 03 11 0E",
+   "users_gen": 1,
+   "content_hits": 1,
+   "users_mnem": [
+    "movzx"
+   ],
+   "strict": {
+    "sig": "F3 0F 11 45 F4 0F B6 B4 B0 ?? ?? ?? ?? 8B C1",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F3 0F 11 45 ?? 0F B6 B4 B0 ?? ?? ?? ?? 8B C1",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-06c",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x102608e6",
+   "len": 6,
+   "new": "81 E2 00 78 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "81 E2 00 38 00 00",
+   "imm_val": 14336,
+   "imm_mnem": "and",
+   "imm_new": 30720,
+   "strict": {
+    "sig": "C1 EE 0B 81 E2 00 38 00 00 48 81 C2 FF 07 00 00",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "C1 EE ?? 81 E2 00 38 00 00 48 81 C2 ?? ?? ?? ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "fn_sibling": "P5-06b"
+  },
+  {
+   "id": "P5-06d",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x102608f5",
+   "len": 3,
+   "new": "C1 EF 0F",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "C1 EF 0E",
+   "imm_val": 14,
+   "imm_mnem": "shr",
+   "imm_new": 15,
+   "strict": {
+    "sig": "81 C2 FF 07 00 00 23 D7 C1 EF 0E 42 2B FE",
+    "ins_off": 8,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "81 C2 ?? ?? ?? ?? 23 D7 C1 EF 0E 42 2B FE",
+    "ins_off": 8,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "fn_sibling": "P5-06b"
+  },
+  {
+   "id": "P5-07a",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x102609a5",
+   "len": 5,
+   "new": "BA 10 00 00 00",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "BA 0F 00 00 00",
+   "imm_val": 15,
+   "imm_mnem": "mov",
+   "imm_new": 16,
+   "strict": {
+    "sig": "F6 C3 01 BA 0F 00 00 00 B8 0C 00 00 00",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "F6 C3 ?? BA 0F 00 00 00 B8 ?? ?? ?? ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "fn_sibling": "P5-07b"
+  },
+  {
+   "id": "P5-07b",
+   "group": "network-coordinates",
+   "module": "bin/engine.dll",
+   "va_gen": "0x103b0824",
+   "len": 8,
+   "new": "06 06 15 11 04 04 13 0F",
+   "kind": "ref",
+   "ref_va_gen": "0x102609c3",
+   "data_offset": 0,
+   "orig": "06 06 14 11 04 04 12 0F",
+   "users_gen": 1,
+   "content_hits": 1,
+   "users_mnem": [
+    "movzx"
+   ],
+   "strict": {
+    "sig": "0F B6 45 0C 0F B6 94 83 ?? ?? ?? ?? 8B C1",
+    "ins_off": 4,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "0F B6 45 ?? 0F B6 94 83 ?? ?? ?? ?? 8B C1",
+    "ins_off": 4,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-15a",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abf78",
+   "len": 2,
+   "new": "6A 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 11",
+   "strict": {
+    "sig": "D9 1C 24 6A 00 6A 11 6A 04 6A 00 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A 11 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24",
+    "ins_off": 47,
+    "hits": 4,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-15b",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abfad",
+   "len": 2,
+   "new": "6A 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 11",
+   "strict": {
+    "sig": "D9 1C 24 6A 00 6A 11 6A 04 6A 04 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A 11 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24",
+    "ins_off": 47,
+    "hits": 4,
+    "occurrence": 1
+   }
+  },
+  {
+   "id": "P4-15c",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abfe2",
+   "len": 2,
+   "new": "6A 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 11",
+   "strict": {
+    "sig": "D9 1C 24 6A 00 6A 11 6A 04 6A 08 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A 11 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24",
+    "ins_off": 47,
+    "hits": 4,
+    "occurrence": 2
+   }
+  },
+  {
+   "id": "P4-15d",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac017",
+   "len": 2,
+   "new": "6A 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 11",
+   "strict": {
+    "sig": "D9 1C 24 6A 00 6A 11 6A 04 6A 0C 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A 11 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24",
+    "ins_off": 47,
+    "hits": 4,
+    "occurrence": 3
+   }
+  },
+  {
+   "id": "P4-15e",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac04c",
+   "len": 2,
+   "new": "6A 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 11",
+   "strict": {
+    "sig": "D9 1C 24 6A 00 6A 11 6A 04 6A 10 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A 11 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? 83 C4 ??",
+    "ins_off": 18,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-15f",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac081",
+   "len": 2,
+   "new": "6A 12",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 11",
+   "strict": {
+    "sig": "D9 1C 24 6A 00 6A 11 6A 04 6A 14 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "D9 05 ?? ?? ?? ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A 11 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ??",
+    "ins_off": 21,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-16a",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abf58",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "6A 00 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 1C 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ??",
+    "ins_off": 17,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "75 ?? 6A ?? 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ??",
+    "ins_off": 27,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-16b",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abf8d",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "6A 00 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04",
+    "ins_off": 17,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ??",
+    "ins_off": 39,
+    "hits": 4,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-16c",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abfc2",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "6A 04 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04",
+    "ins_off": 17,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ??",
+    "ins_off": 39,
+    "hits": 4,
+    "occurrence": 1
+   }
+  },
+  {
+   "id": "P4-16d",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abff7",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "6A 08 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ??",
+    "ins_off": 17,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ??",
+    "ins_off": 39,
+    "hits": 4,
+    "occurrence": 2
+   }
+  },
+  {
+   "id": "P4-16e",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac02c",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "6A 0C 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ??",
+    "ins_off": 17,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ??",
+    "ins_off": 39,
+    "hits": 4,
+    "occurrence": 3
+   }
+  },
+  {
+   "id": "P4-16f",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac06c",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "83 EC 08 D9 05 ?? ?? ?? ?? D9 5C 24 04 D9 05 ?? ?? ?? ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 05 ?? ?? ?? ?? D9 5C 24 ?? D9 05 ?? ?? ?? ??",
+    "ins_off": 3,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-16g",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abf6d",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "83 C4 1C 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 6A 00 6A 11 6A 04",
+    "ins_off": 15,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ??",
+    "ins_off": 42,
+    "hits": 4,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-16h",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abfa2",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 6A 00 6A 11 6A 04 6A 04",
+    "ins_off": 15,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ??",
+    "ins_off": 42,
+    "hits": 4,
+    "occurrence": 1
+   }
+  },
+  {
+   "id": "P4-16i",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102abfd7",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 6A 00 6A 11 6A 04 6A 08",
+    "ins_off": 15,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ??",
+    "ins_off": 42,
+    "hits": 4,
+    "occurrence": 2
+   }
+  },
+  {
+   "id": "P4-16j",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac00c",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 6A 00 6A 11 6A 04 6A 0C",
+    "ins_off": 15,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ??",
+    "ins_off": 42,
+    "hits": 4,
+    "occurrence": 3
+   }
+  },
+  {
+   "id": "P4-16k",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac041",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "83 C4 24 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 6A 00 6A 11 6A 04 6A 10",
+    "ins_off": 15,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? 83 C4 ??",
+    "ins_off": 36,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P4-16l",
+   "group": "effect-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x102ac076",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "D9 05 ?? ?? ?? ?? D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 6A 00 6A 11",
+    "ins_off": 10,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "83 EC ?? D9 05 ?? ?? ?? ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 6A ?? 6A ??",
+    "ins_off": 13,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-08",
+   "group": "beam-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x10280bc9",
+   "len": 2,
+   "new": "6A 14",
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "6A 13",
+   "strict": {
+    "sig": "68 00 04 00 00 6A 13 6A 0C 68 18 03 00 00",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "68 ?? ?? ?? ?? 6A 13 6A ?? 68 ?? ?? ?? ??",
+    "ins_off": 5,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-09a",
+   "group": "beam-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x10280ba6",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "POS32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 46",
+   "strict": {
+    "sig": "6A 72 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 40 68 ?? ?? ?? ?? 83 EC 08 D9 5C 24 04",
+    "ins_off": 17,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "6A ?? 6A ?? 6A ?? 6A ?? 6A ?? 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? E8 ?? ?? ?? ?? D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 68 ?? ?? ?? ?? 6A ??",
+    "ins_off": 25,
+    "hits": 1,
+    "occurrence": 0
+   }
+  },
+  {
+   "id": "P5-09b",
+   "group": "beam-positions",
+   "module": "garrysmod/bin/server.dll",
+   "va_gen": "0x10280bbb",
+   "len": 6,
+   "new": {
+    "abs32": 2,
+    "target": "NEG32768"
+   },
+   "kind": "code",
+   "patch_delta": 0,
+   "orig": "D9 05 ?? ?? ?? ??",
+   "expect_ref": "00 00 80 C6",
+   "strict": {
+    "sig": "83 EC 08 D9 5C 24 04 D9 05 ?? ?? ?? ?? D9 1C 24 68 00 04 00 00 6A 13",
+    "ins_off": 7,
+    "hits": 1,
+    "occurrence": 0
+   },
+   "loose": {
+    "sig": "D9 05 ?? ?? ?? ?? 83 C4 ?? 68 ?? ?? ?? ?? 83 EC ?? D9 5C 24 ?? D9 05 ?? ?? ?? ?? D9 1C 24 68 ?? ?? ?? ?? 6A ?? 6A ?? 68 ?? ?? ?? ??",
+    "ins_off": 21,
+    "hits": 1,
+    "occurrence": 0
+   }
+  }
+ ]
+}
