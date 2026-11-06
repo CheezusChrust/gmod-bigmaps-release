@@ -1,5 +1,6 @@
 work/
 build/
+/release/
 __pycache__/
 *.pyc
 *.dll
