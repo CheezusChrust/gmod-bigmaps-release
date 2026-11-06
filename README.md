@@ -1,42 +1,38 @@
-# Garry's Mod Bigger Maps
+# Bigger Maps for Garry's Mod
 
-An experimental binary module for playing maps beyond Garry's Mod's usual
-±16,384-unit world limit. It targets approximately ±32,768 units per axis and
-automatically switches between expanded and normal behavior for each map. It
-patches the running process, not the game files on disk.
+This project aims to increase the maximum map size in Garry's Mod by a factor of two.
 
-## Target platforms
+For full disclosure, I created this project primarily with the usage of AI tools to disassemble engine files (server.dll, client.dll, engine.dll, vbsp++.exe), review various sources of leaked source engine code, and overall get this project to work. I will not claim to be a reverse engineering nor C++ expert by any means, I was just tired of waiting for somebody else to do this. This project is experimental, use it at your own risk (mainly, of crashing your GMod or your server).
 
-The project targets the **latest stable/public** Garry's Mod builds for:
+A lot of the tooling is located in a separate research repository on my pc that's a huge mess, I'll do what I can to clean it up and get stuff added here so everything in here can be replicated from scratch.
 
-- Windows clients: 32-bit (x86) and 64-bit (x86-64).
-- Windows dedicated servers: 32-bit (x86) and 64-bit (x86-64).
-- Linux dedicated servers: 32-bit (x86).
+This module is made specifically for the **latest stable/public** build (at the time of writing this description). It will probably break and need an update as soon as Rubat changes anything.
 
-**Compatibility is build-specific, not automatic.** The current module was tested
-with Steam app 4000 public build `25375506` and app 4020 public build `25375525`.
-It verifies stock binary hashes and refuses unknown builds. A later update may
-require a new port even when it is on the stable branch. Linux clients and Linux
-64-bit servers are not supported.
+## Target Platforms
+- Windows: 32 and 64 bit client and server
+- Linux: 32 bit server
 
-## Getting started
+This module will not work on Linux clients (too lazy to set up a linux client), or 64 bit Linux servers (physics doesn't work great on 64 bit linux anyways in general, at least right now).
 
-This is an initial testing project, not a finished release. Module binaries are
-not stored in this repository; use a compatible release when one is published
-or [build from source](docs/DEVELOPMENT.md).
+## Installing
 
-1. [Install the module](docs/INSTALL.md) on your game or dedicated server.
-2. On oversized multiplayer maps, the server and every client need the module
-   and compatible stock files. Normal maps return to stock behavior.
-3. Map authors can find the separate [vbsp++ patcher](compiler/README.md).
+### Server Owners
+1. Place the relevant `bigmaps` module for your server in the `<server>/garrysmod/lua/bin/` directory. If bin doesn't exist, create it.
+2. Create a file named `bigmaps.lua` in `<server>/garrysmod/lua/autorun/server/` with the following content:
 
-The safe boundary is not established, and z-fighting is worse near map edges.
-Dedicated servers must start on a normal-sized map before changing to an
-oversized one. See [testing and limitations](docs/TESTING.md).
+```lua
+require("bigmaps")
+```
+
+### Regular Players
+1. Place the relevant `bigmaps` module for your client in the `<gmod>/garrysmod/lua/bin/` directory. If bin doesn't exist, create it.
+2. Navigate to `<gmod>/garrysmod/lua/menu/menu.lua` and add the following line to the *very end of the file, on a new line:*
+
+```lua
+require("bigmaps")
+```
+This second step is necessary to have the module loaded prior to opening a map on clients.
 
 ## Development
 
-The runtime source is in [module/](module/); build scripts are in [tools/](tools/).
-See [development notes](docs/DEVELOPMENT.md) and [agent guidance](AGENTS.md).
-The earlier research project is maintained separately and contains detailed
-patch evidence and historical experiments.
+Whenever I feel like, plus this will break as soon as any update for the main branch of Garry's Mod comes around. Will try to keep it updated but no guarantees.
