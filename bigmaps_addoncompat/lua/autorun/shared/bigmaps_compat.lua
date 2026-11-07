@@ -7,7 +7,7 @@ local function clampPos(pos)
     return Vector(clamp(x, minx, maxx), clamp(y, miny, maxy), clamp(z, minz, maxz))
 end
 
-hook.Add("InitPosEntity", "BigMapsCompatInitPosEntity", function()
+hook.Add("InitPostEntity", "BigMapsCompatInitPosEntity", function()
     if WireLib then
         WireLib.clampPos = clampPos
     end
