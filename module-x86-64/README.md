@@ -18,8 +18,13 @@ It has the same filename as the public module; preserve the public DLL before
 replacing it and close the game before switching versions. The existing main-menu
 `require("bigmaps")` loader is used. Do not install both versions at once.
 
-Offline and read-only checks have passed, but this build has not yet been loaded
-or tested in game. Start with a normal map, then the existing oversized test map;
+Offline and read-only checks passed, and the owner reported successful main-menu
+loading, hook installation, normal-map classification, oversized-map loading
+and patch activation. The owner reports gameplay functioning properly in that
+map. Both map-transition directions
+passed, including full stock restoration and subsequent re-enabling without
+restarting.
+Extended transition cycling and multiplayer remain unverified. Check the existing oversized test map;
 check the `[bigmaps]` console messages and test movement, traces, props, effects
 and sound beyond the old boundary. Multiplayer, cross-build compatibility and
 dedicated servers are unverified. See [the port analysis](../docs/X86_64_PORT_ANALYSIS.md)

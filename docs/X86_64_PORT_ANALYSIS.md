@@ -1,8 +1,13 @@
 # Windows x86-64 branch analysis
 
-Status: an experimental Windows x64 game module has been built. Offline and
-read-only runtime checks passed; no module loading or gameplay test has been
-performed. The public-branch module remains separate and unchanged.
+Status: an experimental Windows x64 game module has been built and loaded at
+the main menu. Initial verification, both hook installations and normal-map
+classification, direct oversized-map loading and patch activation passed.
+The owner reports gameplay functioning properly in the oversized map.
+Oversized-to-normal stock restoration and normal-to-oversized re-enabling
+passed in the same session.
+Extended transition cycling and multiplayer remain unverified.
+The public-branch module remains separate and unchanged.
 
 ## Build identity
 
@@ -47,16 +52,19 @@ sound hook. All 69 stock spans matched the running game's memory.
   function has not been tested in game.
 - CRC function `0x1801AB950` is called and stored at `0x1801AC26D`, to global
   `0x1808AE5F4`; its anchors matched live memory and the stored stock CRC was
-  `0x546B7A01`. The module must still reproduce the stored CRC before writing.
+  `0x546B7A01`. The successful menu initialization also implies the module
+  reproduced the stored CRC before installing hooks.
 - Host hook starts at `0x18015AEF0`; client sign-on hook starts at `0x1800AA370`
   with state and map-name offsets `0x15C` and `0x1D8`. The branch-specific client
   trampoline replays the RIP-relative load through its absolute target. Hook
-  addresses and original prologues matched live memory; runtime hook behavior
-  has not been tested.
+  addresses and original prologues matched live memory, and the owner reported
+  successful installation of both hooks at the main menu. The host hook ran for
+  `gm_construct` and classified it as normal; the client join hook remains
+  untested.
 - RTTI and the `VBaseFileSystem011` factory indicate a secondary
   filesystem vtable at RVA `0xAFB88`, with first five slot RVAs `0x205D0`,
   `0x24980`, `0x1ECA0`, `0x14630`, `0x22BB0`; these matched live memory. The
-  module verifies the actual factory result before use.
+  successful menu initialization implies the factory result passed module checks.
 - The client ConVar stores numeric values XOR-encoded with the low 32 bits of
   its object address. The branch copy encodes live `r_mapextents` writes; its
   stock object, pointer layout and decoded values matched live memory.
@@ -85,12 +93,27 @@ python module-x86-64\tests\probe_quantized.py
   stock/patched/tampered/restored classification of all 69 static sites and the
   dynamic sound hook. Live stock SendTable fields and CRC anchors were checked.
 
-No live module, hook, filesystem factory call, map or gameplay test was performed.
-The compiler is independent and outside this port's scope.
+The owner reported a successful main-menu load with all three game DLLs
+recognized as stock, both hooks installed and the module currently stock. On
+`gm_construct`, the host hook reported normal bounds and left the module stock.
+The owner loaded `bm_features` directly from the menu: the module
+reported 70 sites and seven SendProps written, zero failures, all-patched re-check,
+CRC `0x546B7A01 -> 0x8D332B66` and `r_mapextents` `16384 -> 32768`. The owner
+subsequently reported that everything gameplay-wise appeared to function
+properly. Record this as an owner-reported single-player gameplay pass, not an
+exhaustive per-feature or all-axis boundary certification. The compiler is
+independent and outside this port's scope.
+
+On `bm_features -> gm_construct`, the module restored 70 sites and seven
+SendProps with zero failures and an all-stock re-check, changed CRC
+`0x8D332B66 -> 0x546B7A01`, and reset `r_mapextents` to 16384. On
+`gm_construct -> bm_features`, re-enabling without restarting also passed:
+70 sites and seven SendProps, zero failures, all-patched re-check, CRC
+`0x546B7A01 -> 0x8D332B66`, and `r_mapextents` restored to 32768.
 
 ## Remaining work
 
-Test module loading and refusal behavior on the current game, then normal and
-oversized maps, including movement, traces, physics, effects and sound outside
-the old boundary. Multiplayer and cross-build compatibility are unverified.
-This branch module deliberately refuses dedicated-server use.
+Optional follow-up: extended normal/oversized map cycles. Detailed boundary
+and per-feature coverage has not been recorded. Live
+refusal behavior, multiplayer and cross-build compatibility are unverified. This
+branch module deliberately refuses dedicated-server use.
