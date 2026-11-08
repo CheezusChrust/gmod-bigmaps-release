@@ -1,6 +1,7 @@
 work/
 build/
-/release/
+release/
+release-x86-64/
 __pycache__/
 *.pyc
 *.dll
