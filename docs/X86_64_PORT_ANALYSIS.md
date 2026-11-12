@@ -1,15 +1,60 @@
 # Windows x86-64 branch analysis
 
-Status: an experimental Windows x64 game module has been built and loaded at
-the main menu. Initial verification, both hook installations and normal-map
-classification, direct oversized-map loading and patch activation passed.
-The owner reports gameplay functioning properly in the oversized map.
-Oversized-to-normal stock restoration and normal-to-oversized re-enabling
-passed in the same session.
-Extended transition cycling and multiplayer remain unverified.
-The public-branch module remains separate and unchanged.
+Status: the experimental Windows x64 module now targets Steam app 4000
+`x86-64` build `26623711`. The new DLL identities, 69 patch spans, engine
+anchors, game hooks and filesystem provider are verified against staged copies.
+The native tests and offline codec probes pass. **Build 26623711 has not been
+loaded in the game.** The gameplay and map-transition results below are from
+the previous build `26439081` and do not establish compatibility with the new
+build. The public-branch module remains separate and unchanged.
 
-## Build identity
+## Build 26623711 retarget
+
+The app manifest reports branch `x86-64`, build `26623711`. Read-only analysis
+copies are under the ignored `work/analysis/26623711-x86-64` tree; the Steam
+installation was not modified.
+
+| File | SHA-256 |
+|---|---|
+| `engine.dll` | `6432F6538429F8D0C50ADC6E9BD7669F60E517CCE157A25B9E1DF34F7696CEA8` |
+| `client.dll` | `F359E74AB9A40975BC502D2CAA13C808BB4ABF0650879DC77B49AF6B3A846DB2` |
+| `server.dll` | `4CEB04AAF56E0F2BFACAD188770F1987C0ED324ABB1B1AA95D4DA4A6C683FA3E` |
+| `filesystem_stdio.dll` | `ED28870DCDB75817B0F81F83835550B69CA204D98B06BDF7017CDDBDFFC2017F` |
+
+The target table is in `module-x86-64/targets/win64_branch.h`. All 69 stock
+spans match the new files, with no duplicate site IDs. The five engine CRC/host
+anchors, both engine hook prologues, all four file hashes, the sound entry and
+scale bytes, and the filesystem vtable and first five slots were checked against
+the build-specific images. The filesystem vtable remains at RVA `0xAFB88`;
+slots are `0x205D0`, `0x24980`, `0x1ECA0`, `0x14630` and `0x22BB0`.
+
+Key re-derived locations include the coordinate writer/reader at engine RVAs
+`0x2B22F0` / `0x2B34A0`, multiplayer writer/reader at `0x2B2440` / `0x2B3830`,
+SendProp skip/compare at `0x19E960` / `0x19E620`, sound entry/scale at
+`0x211C49` / `0x39D08C`, host hook at `0x15B090`, and client sign-on hook at
+`0xAA410`. CRC function/global are `0x1ABAF0` / `0x8AE5F4`; host-state remains
+at `0x8B41F0`. The `r_mapextents` object, name string and default string are at
+client RVAs `0xA36410`, `0x6E6078` and `0x6E606C`; its field offsets remain
+unchanged.
+
+Validation on the staged build:
+
+- `tools/test-module-x86-64.cmd`: syntax, trampoline, hook-state and all 69
+  stock/patched/tampered/restored site-state checks pass.
+- `module-x86-64/tests/probe_coord.py`: 14/15-bit standard and multiplayer
+  modes pass 234 cases plus three packed sequences per mode.
+- `module-x86-64/tests/probe_sound.py`: 12/13-bit sound reader and writer
+  blocks pass 288 independent-model cases per mode.
+- `module-x86-64/tests/probe_quantized.py`: beam/effect stock and wide
+  SendProp encode/decode/skip checks pass 771 cases each. The multiplier is
+  initialized from the module's range formula; the old-build server helper is
+  not used by this probe.
+
+These are offline/native checks only. Main-menu load, map activation and
+restoration, live bounds behavior, multiplayer and refusal behavior still need
+testing on build `26623711` before treating this target as gameplay-verified.
+
+## Previous build identity: 26439081
 
 The app 4000 Steam manifest reported branch `x86-64`, build `26439081`.
 Candidate Windows 64-bit DLLs were copied from the installed `bin/win64` into
@@ -28,7 +73,7 @@ is absent in this installation. Read-only inspection of the running 64-bit game
 confirmed that all four files above were loaded from `bin/win64`. The analysis
 copies place client and server in the old layout solely for the scanner.
 
-## Site discovery
+## Previous build site discovery: 26439081
 
 The initial public-build x64 signature scan reported 23 VERIFIED, 5 REVIEW and
 29 NOT FOUND of 57 sites. The ignored `port-report.json` records that output;

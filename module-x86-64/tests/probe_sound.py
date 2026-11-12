@@ -8,35 +8,35 @@ from unicorn.x86_const import (UC_X86_REG_R8, UC_X86_REG_R9, UC_X86_REG_RBX, UC_
 import probe_coord as probe
 
 
-START = 0x180211929
-END = 0x180211D64
+START = 0x180211C49
+END = 0x180212084
 STUB = 0x30001000
-SOUND_ENTRY = bytes.fromhex("f30f100d4bb618004585c90f8413010000")
+SOUND_ENTRY = bytes.fromhex("f30f100d3bb418004585c90f8413010000")
 DEST = probe.codec.PROP + 0x100
 PREVIOUS = probe.codec.PROP + 0x200
-WRITER_START = 0x18014F455
-WRITER_END = 0x18014F606
+WRITER_START = 0x18014F5C5
+WRITER_END = 0x18014F776
 WRITER_SITES = (
-    (0x18014F4CA, "41b80c000000", "41b80d000000"),
-    (0x18014F559, "41b80c000000", "41b80d000000"),
-    (0x18014F5E8, "41b80c000000", "41b80d000000"),
+    (0x18014F63A, "41b80c000000", "41b80d000000"),
+    (0x18014F6C9, "41b80c000000", "41b80d000000"),
+    (0x18014F758, "41b80c000000", "41b80d000000"),
 )
 SITES = (
-    (0x18021193F, "8d41f4", "8d41f3"),
-    (0x180211945, "44230d045c1f00", "44230d085c1f00"),
-    (0x180211954, "c1ea0c", "c1ea0d"),
-    (0x180211A37, "41c1e114", "41c1e113"),
-    (0x180211A3B, "41c1f914", "41c1f913"),
-    (0x180211AC5, "8d41f4", "8d41f3"),
-    (0x180211ACB, "44230d7e5a1f00", "44230d825a1f00"),
-    (0x180211ADA, "c1ea0c", "c1ea0d"),
-    (0x180211BBD, "41c1e114", "41c1e113"),
-    (0x180211BC1, "41c1f914", "41c1f913"),
-    (0x180211C4B, "8d41f4", "8d41f3"),
-    (0x180211C51, "44230df8581f00", "44230dfc581f00"),
-    (0x180211C60, "c1ea0c", "c1ea0d"),
-    (0x180211D42, "41c1e114", "41c1e113"),
-    (0x180211D46, "41c1f914", "41c1f913"),
+    (0x180211C5F, "8d41f4", "8d41f3"),
+    (0x180211C65, "44230df45a1f00", "44230df85a1f00"),
+    (0x180211C74, "c1ea0c", "c1ea0d"),
+    (0x180211D57, "41c1e114", "41c1e113"),
+    (0x180211D5B, "41c1f914", "41c1f913"),
+    (0x180211DE5, "8d41f4", "8d41f3"),
+    (0x180211DEB, "44230d6e591f00", "44230d72591f00"),
+    (0x180211DFA, "c1ea0c", "c1ea0d"),
+    (0x180211EDD, "41c1e114", "41c1e113"),
+    (0x180211EE1, "41c1f914", "41c1f913"),
+    (0x180211F6B, "8d41f4", "8d41f3"),
+    (0x180211F71, "44230de8571f00", "44230dec571f00"),
+    (0x180211F80, "c1ea0c", "c1ea0d"),
+    (0x180212062, "41c1e114", "41c1e113"),
+    (0x180212066, "41c1f914", "41c1f913"),
 )
 
 
@@ -90,9 +90,9 @@ def check(width):
             raise RuntimeError("Unexpected sound-reader entry instructions")
         machine.mem_map(STUB, 0x1000)
         jump = bytes.fromhex("ff2500000000")
-        stub = (bytes.fromhex("41ffc55048b8") + struct.pack("<Q", 0x18039CF7C) +
+        stub = (bytes.fromhex("41ffc55048b8") + struct.pack("<Q", 0x18039D08C) +
                 bytes.fromhex("f30f1008584585c9750e") +
-                jump + struct.pack("<Q", 0x180211A4D) + jump + struct.pack("<Q", 0x18021193A))
+            jump + struct.pack("<Q", 0x180211D6D) + jump + struct.pack("<Q", 0x180211C5A))
         machine.mem_write(STUB, stub)
         machine.mem_write(START, jump + struct.pack("<Q", STUB) + b"\x90" * 3)
         for address, original, replacement in SITES:

@@ -31,12 +31,12 @@ inline std::size_t BuildSoundTrampoline(unsigned char* output, std::uintptr_t en
         append(&value, sizeof(value));
     };
     append(prefix, sizeof(prefix));
-    address(0x0039CF7C);
+    address(0x0039D08C);
     append(middle, sizeof(middle));
     append(jump, sizeof(jump));
-    address(0x00211A4D);
+    address(0x00211D6D);
     append(jump, sizeof(jump));
-    address(0x0021193A);
+    address(0x00211C5A);
     return static_cast<std::size_t>(current - output);
 }
 

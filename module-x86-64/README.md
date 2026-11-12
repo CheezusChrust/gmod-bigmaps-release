@@ -1,7 +1,7 @@
 # Experimental x86-64 branch module
 
 This separate Windows 64-bit game module targets Steam app 4000 `x86-64` build
-`26439081`. It is not the public-branch module and refuses dedicated-server use.
+`26623711`. It is not the public-branch module and refuses dedicated-server use.
 It verifies exact DLL hashes, patch bytes, SendProps, CRC anchors and the game
 filesystem before writing. A different game update requires a new port.
 
@@ -18,14 +18,16 @@ It has the same filename as the public module; preserve the public DLL before
 replacing it and close the game before switching versions. The existing main-menu
 `require("bigmaps")` loader is used. Do not install both versions at once.
 
-Offline and read-only checks passed, and the owner reported successful main-menu
-loading, hook installation, normal-map classification, oversized-map loading
-and patch activation. The owner reports gameplay functioning properly in that
-map. Both map-transition directions
-passed, including full stock restoration and subsequent re-enabling without
-restarting.
-Extended transition cycling and multiplayer remain unverified. Check the existing oversized test map;
-check the `[bigmaps]` console messages and test movement, traces, props, effects
-and sound beyond the old boundary. Multiplayer, cross-build compatibility and
-dedicated servers are unverified. See [the port analysis](../docs/X86_64_PORT_ANALYSIS.md)
-for evidence and reproducible emulator checks.
+The 26623711 target signatures, anchors, hooks and filesystem-provider hash
+match staged copies of the installed binaries. The native tests and three
+offline emulator probes pass. This build has **not** been loaded in the game;
+the earlier single-player and map-transition results apply only to build
+26439081. See [the port analysis](../docs/X86_64_PORT_ANALYSIS.md) for hashes,
+evidence and the remaining live-test requirements.
+
+Before installing, preserve the current module and close the game. Do not mix
+this branch module with the public-branch module. After loading, verify the
+`[bigmaps]` messages, normal-map classification and oversized-map activation;
+test movement, traces, props, effects and sound beyond the old boundary. Map
+transitions, multiplayer, cross-build compatibility and dedicated servers are
+not verified for build 26623711.

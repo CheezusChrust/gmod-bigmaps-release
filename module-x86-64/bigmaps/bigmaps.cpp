@@ -1,4 +1,4 @@
-// Experimental Windows x64 game module for Steam x86-64 branch build 26439081.
+// Experimental Windows x64 game module for Steam x86-64 branch build 26623711.
 
 #include "patcher.h"
 

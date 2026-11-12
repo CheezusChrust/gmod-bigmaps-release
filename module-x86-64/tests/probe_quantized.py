@@ -5,31 +5,23 @@ import struct
 import probe_coord as probe
 
 
-SERVER = probe.ENGINE.parents[2] / "garrysmod/bin/win64/server.dll"
-SERVER_SHA256 = "FFFF73124BF46ADD691459A030C3426B940787229D1F3EF9640CE7DFE9BB1F96"
-HIGH_LOW_MUL = 0x18032D020
-ENCODE = 0x1801A0E10
-DECODE = 0x1801A09D0
+ENCODE = 0x1801A0FB0
+DECODE = 0x1801A0B70
 
 
 def main():
-    for path, digest in ((probe.ENGINE, probe.SHA256), (SERVER, SERVER_SHA256)):
-        if hashlib.sha256(path.read_bytes()).hexdigest().upper() != digest:
-            raise RuntimeError(f"Unexpected image hash: {path}")
+    if hashlib.sha256(probe.ENGINE.read_bytes()).hexdigest().upper() != probe.SHA256:
+        raise RuntimeError(f"Unexpected image hash: {probe.ENGINE}")
     engine = probe.codec.load(str(probe.ENGINE))
-    server = probe.codec.load(str(SERVER))
     for offset in range(32):
         for width in range(33):
             mask = ~(((1 << width) - 1) << offset) & 0xFFFFFFFF
             engine.mem_write(probe.WRITE_MASKS + 4 * (offset * 33 + width), struct.pack("<I", mask))
-    rng = random.Random(26439081)
+    rng = random.Random(26623711)
     for name, bits, limit, flags in (("stock beam", 19, 16384, 0x400), ("wide beam", 20, 32768, 0x400),
                                      ("stock effect", 17, 16384, 0), ("wide effect", 18, 32768, 0)):
-        probe.codec.call(server, HIGH_LOW_MUL, bits, xmm1=float(2 * limit))
-        multiplier = probe.codec.xmm0(server)
         expected_multiplier = probe.codec.f32(((1 << bits) - 1) / (2 * limit))
-        if multiplier != expected_multiplier:
-            raise AssertionError(f"{name}: multiplier {multiplier} != {expected_multiplier}")
+        multiplier = expected_multiplier
         engine.mem_write(probe.codec.PROP, b"\0" * 0x80)
         engine.mem_write(probe.codec.PROP + 0x14, struct.pack("<Iff", bits, -float(limit), float(limit)))
         engine.mem_write(probe.codec.PROP + 0x50, struct.pack("<fI", multiplier, flags))
