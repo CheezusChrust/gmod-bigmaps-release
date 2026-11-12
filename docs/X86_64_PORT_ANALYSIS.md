@@ -3,10 +3,13 @@
 Status: the experimental Windows x64 module now targets Steam app 4000
 `x86-64` build `26623711`. The new DLL identities, 69 patch spans, engine
 anchors, game hooks and filesystem provider are verified against staged copies.
-The native tests and offline codec probes pass. **Build 26623711 has not been
-loaded in the game.** The gameplay and map-transition results below are from
-the previous build `26439081` and do not establish compatibility with the new
-build. The public-branch module remains separate and unchanged.
+The native tests and offline codec probes pass. The owner reports that
+`bm_features` works in-game and a small -> large -> small map cycle correctly
+applies and restores module patch state. This is a reported map-level test, not
+an exhaustive feature or boundary certification. The gameplay and transition
+results in the previous-build section are from `26439081` and do not establish
+compatibility with the new build. The public-branch module remains separate and
+unchanged.
 
 ## Build 26623711 retarget
 
@@ -50,9 +53,11 @@ Validation on the staged build:
   initialized from the module's range formula; the old-build server helper is
   not used by this probe.
 
-These are offline/native checks only. Main-menu load, map activation and
-restoration, live bounds behavior, multiplayer and refusal behavior still need
-testing on build `26623711` before treating this target as gameplay-verified.
+The owner-reported live check loaded `bm_features`, then transitioned small ->
+large -> small; the module applied and restored patch state as expected. Main-menu
+startup/refusal paths, per-feature and boundary behavior, multiplayer and
+dedicated-server use were not reported and remain unverified for build
+`26623711`.
 
 ## Previous build identity: 26439081
 

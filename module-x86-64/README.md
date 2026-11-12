@@ -20,14 +20,16 @@ replacing it and close the game before switching versions. The existing main-men
 
 The 26623711 target signatures, anchors, hooks and filesystem-provider hash
 match staged copies of the installed binaries. The native tests and three
-offline emulator probes pass. This build has **not** been loaded in the game;
-the earlier single-player and map-transition results apply only to build
-26439081. See [the port analysis](../docs/X86_64_PORT_ANALYSIS.md) for hashes,
-evidence and the remaining live-test requirements.
+offline emulator probes pass. The owner reports that `bm_features` works
+in-game and that a small -> large -> small map cycle applies and restores the
+module's patch state correctly. This does not certify every feature, boundary,
+multiplayer or dedicated-server behavior. The earlier detailed single-player
+results apply only to build 26439081. See [the port analysis](../docs/X86_64_PORT_ANALYSIS.md)
+for hashes, evidence and remaining coverage gaps.
 
-Before installing, preserve the current module and close the game. Do not mix
-this branch module with the public-branch module. After loading, verify the
-`[bigmaps]` messages, normal-map classification and oversized-map activation;
-test movement, traces, props, effects and sound beyond the old boundary. Map
-transitions, multiplayer, cross-build compatibility and dedicated servers are
-not verified for build 26623711.
+Before installing another version, preserve the current module and close the
+game. Do not mix this branch module with the public-branch module. The reported
+test covered `bm_features` and a small-large-small transition cycle; movement,
+traces, props, effects, sound, exact boundaries, multiplayer, cross-build
+compatibility and dedicated servers are not all independently certified for
+build 26623711.
