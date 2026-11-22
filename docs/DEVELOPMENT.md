@@ -38,6 +38,13 @@ responsibility and build-specific data kept out of the platform logic:
   `-usegh` mode: loaded as `ghostinj.dll` before the engine, a watcher thread installs
   the enum hook and a `CGameServer::SpawnServer` hook so the first map can be oversized.
 
+The `LV-xx` sites in [win32.h](../module/targets/win32.h) and [win64.h](../module/targets/win64.h) cover the
+client's `mat_leafvis` leaf wireframe (`AddLeafPortals` in `engine.dll`, found through the "PlaneList: bad model"
+string). It clips each leaf to a world box of `+-MAX_COORD_INTEGER`, which the compiler baked in as 16384
+immediates and loads of the shared `+-16384.0f` literals. The immediates are widened in place and the loads
+are redirected to existing `+-32768.0f` literals. Not covered: `PolyFromPlane`'s default 9000-unit half-size, which
+also truncates very large leaves in stock.
+
 Each build compiles `bigmaps.cpp`; the headers are intentionally split for
 review and maintenance, not linked as separate binaries.
 

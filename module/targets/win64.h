@@ -135,6 +135,41 @@ static const unsigned char s_client_0[] = {0x31, 0x36, 0x33, 0x38, 0x34};
 static const unsigned char p_client_0[] = {0x33, 0x32, 0x37, 0x36, 0x38};
 static const unsigned char s_client_1[] = {0x80, 0x46};
 static const unsigned char p_client_1[] = {0x00, 0x47};
+// Leaf visualization (mat_leafvis): AddLeafPortals clips each leaf to a world box of +-MAX_COORD_INTEGER; the
+// compiled code holds 16384 as immediates and as loads of the shared +-16384.0f literals. Immediates are widened in
+// place; loads are redirected to existing +-32768.0f literals (the shared literals themselves stay untouched).
+static const unsigned char s_lv_01[] = {0x43, 0x68, 0x2D, 0x00};
+static const unsigned char p_lv_01[] = {0xEB, 0x5B, 0x2D, 0x00};
+static const unsigned char s_lv_02[] = {0x80, 0xC6};
+static const unsigned char p_lv_02[] = {0x00, 0xC7};
+static const unsigned char s_lv_03[] = {0x80, 0xC6};
+static const unsigned char p_lv_03[] = {0x00, 0xC7};
+static const unsigned char s_lv_04[] = {0x80, 0xC6};
+static const unsigned char p_lv_04[] = {0x00, 0xC7};
+static const unsigned char s_lv_05[] = {0xBB, 0x08, 0x30, 0x00};
+static const unsigned char p_lv_05[] = {0x84, 0xCB, 0x3A, 0x00};
+static const unsigned char s_lv_06[] = {0x80, 0xC6};
+static const unsigned char p_lv_06[] = {0x00, 0xC7};
+static const unsigned char s_lv_07[] = {0x80, 0xC6};
+static const unsigned char p_lv_07[] = {0x00, 0xC7};
+static const unsigned char s_lv_08[] = {0x80, 0xC6};
+static const unsigned char p_lv_08[] = {0x00, 0xC7};
+static const unsigned char s_lv_09[] = {0x80, 0xC6};
+static const unsigned char p_lv_09[] = {0x00, 0xC7};
+static const unsigned char s_lv_10[] = {0x0D, 0x06, 0x30, 0x00};
+static const unsigned char p_lv_10[] = {0xD6, 0xC8, 0x3A, 0x00};
+static const unsigned char s_lv_11[] = {0x80, 0xC6};
+static const unsigned char p_lv_11[] = {0x00, 0xC7};
+static const unsigned char s_lv_12[] = {0x80, 0xC6};
+static const unsigned char p_lv_12[] = {0x00, 0xC7};
+static const unsigned char s_lv_13[] = {0x80, 0xC6};
+static const unsigned char p_lv_13[] = {0x00, 0xC7};
+static const unsigned char s_lv_14[] = {0x80, 0xC6};
+static const unsigned char p_lv_14[] = {0x00, 0xC7};
+static const unsigned char s_lv_15[] = {0x8A, 0x03, 0x30, 0x00};
+static const unsigned char p_lv_15[] = {0x53, 0xC6, 0x3A, 0x00};
+static const unsigned char s_lv_16[] = {0x80, 0xC6};
+static const unsigned char p_lv_16[] = {0x00, 0xC7};
 static const ProbeSite kSites[] = {
     {"engine.dll", "P4-10a", 0x00159E24, 1, s_engine_0, p_engine_0, 0x0},
     {"engine.dll", "P4-10b", 0x00159EAF, 1, s_engine_1, p_engine_1, 0x0},
@@ -186,6 +221,22 @@ static const ProbeSite kSites[] = {
     {"engine.dll", "P4-04", 0x004F16EA, 2, s_engine_47, p_engine_47, 0x0},
     {"engine.dll", "P4-04", 0x004F16EE, 2, s_engine_48, p_engine_48, 0x0},
     {"engine.dll", "P4-04", 0x004F16F2, 2, s_engine_49, p_engine_49, 0x0},
+    {"engine.dll", "LV-01", 0x000C5E01, 4, s_lv_01, p_lv_01, 0x0},
+    {"engine.dll", "LV-02", 0x000C5E1D, 2, s_lv_02, p_lv_02, 0x0},
+    {"engine.dll", "LV-03", 0x000C5ECF, 2, s_lv_03, p_lv_03, 0x0},
+    {"engine.dll", "LV-04", 0x000C5F8A, 2, s_lv_04, p_lv_04, 0x0},
+    {"engine.dll", "LV-05", 0x000C6025, 4, s_lv_05, p_lv_05, 0x0},
+    {"engine.dll", "LV-06", 0x000C603F, 2, s_lv_06, p_lv_06, 0x0},
+    {"engine.dll", "LV-07", 0x000C60F3, 2, s_lv_07, p_lv_07, 0x0},
+    {"engine.dll", "LV-08", 0x000C619C, 2, s_lv_08, p_lv_08, 0x0},
+    {"engine.dll", "LV-09", 0x000C624A, 2, s_lv_09, p_lv_09, 0x0},
+    {"engine.dll", "LV-10", 0x000C62D3, 4, s_lv_10, p_lv_10, 0x0},
+    {"engine.dll", "LV-11", 0x000C62ED, 2, s_lv_11, p_lv_11, 0x0},
+    {"engine.dll", "LV-12", 0x000C6396, 2, s_lv_12, p_lv_12, 0x0},
+    {"engine.dll", "LV-13", 0x000C642C, 2, s_lv_13, p_lv_13, 0x0},
+    {"engine.dll", "LV-14", 0x000C64D4, 2, s_lv_14, p_lv_14, 0x0},
+    {"engine.dll", "LV-15", 0x000C6556, 4, s_lv_15, p_lv_15, 0x0},
+    {"engine.dll", "LV-16", 0x000C6570, 2, s_lv_16, p_lv_16, 0x0},
     {"server.dll", "P5-09a", 0x00303481, 3, s_server_0, p_server_0, 0x0},
     {"server.dll", "P5-09b", 0x00303489, 3, s_server_1, p_server_1, 0x0},
     {"server.dll", "P5-08", 0x003034AA, 1, s_server_2, p_server_2, 0x0},

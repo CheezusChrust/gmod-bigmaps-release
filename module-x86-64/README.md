@@ -38,3 +38,5 @@ test covered `bm_features` and a small-large-small transition cycle; movement,
 traces, props, effects, sound, exact boundaries, multiplayer, cross-build
 compatibility and dedicated servers are not all independently certified for
 build 26623711.
+
+The `LV-xx` sites (16) widen the `mat_leafvis` leaf wireframe's world box from +-16384 to +-32768 (`AddLeafPortals`, engine.dll RVA 0xBFB20). They are verified against the stock bytes and decode correctly when applied to a copy; tested in-game.

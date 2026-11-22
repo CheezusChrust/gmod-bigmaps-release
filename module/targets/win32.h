@@ -147,6 +147,47 @@ static const unsigned char s_client_0[] = {0x31, 0x36, 0x33, 0x38, 0x34};
 static const unsigned char p_client_0[] = {0x33, 0x32, 0x37, 0x36, 0x38};
 static const unsigned char s_client_1[] = {0x80, 0x46};
 static const unsigned char p_client_1[] = {0x00, 0x47};
+// Leaf visualization (mat_leafvis): AddLeafPortals clips each leaf to a world box of +-MAX_COORD_INTEGER; the
+// compiled code holds 16384 as immediates and as loads of the shared +-16384.0f literals. Immediates are widened in
+// place; loads are redirected to existing +-32768.0f literals (the shared literals themselves stay untouched).
+static const unsigned char s_lv_01[] = {0x38, 0xA2, 0x31, 0x10};
+static const unsigned char p_lv_01[] = {0xA8, 0x97, 0x31, 0x10};
+static const unsigned char s_lv_02[] = {0x80, 0xC6};
+static const unsigned char p_lv_02[] = {0x00, 0xC7};
+static const unsigned char s_lv_03[] = {0x80, 0xC6};
+static const unsigned char p_lv_03[] = {0x00, 0xC7};
+static const unsigned char s_lv_04[] = {0x80, 0xC6};
+static const unsigned char p_lv_04[] = {0x00, 0xC7};
+static const unsigned char s_lv_05[] = {0x80, 0xC6};
+static const unsigned char p_lv_05[] = {0x00, 0xC7};
+static const unsigned char s_lv_06[] = {0x80, 0xC6};
+static const unsigned char p_lv_06[] = {0x00, 0xC7};
+static const unsigned char s_lv_07[] = {0x80, 0xC6};
+static const unsigned char p_lv_07[] = {0x00, 0xC7};
+static const unsigned char s_lv_08[] = {0x80, 0xC6};
+static const unsigned char p_lv_08[] = {0x00, 0xC7};
+static const unsigned char s_lv_09[] = {0x74, 0x53, 0x33, 0x10};
+static const unsigned char p_lv_09[] = {0x58, 0x4D, 0x3A, 0x10};
+static const unsigned char s_lv_10[] = {0x80, 0xC6};
+static const unsigned char p_lv_10[] = {0x00, 0xC7};
+static const unsigned char s_lv_11[] = {0x38, 0xA2, 0x31, 0x10};
+static const unsigned char p_lv_11[] = {0xA8, 0x97, 0x31, 0x10};
+static const unsigned char s_lv_12[] = {0x38, 0xA2, 0x31, 0x10};
+static const unsigned char p_lv_12[] = {0xA8, 0x97, 0x31, 0x10};
+static const unsigned char s_lv_13[] = {0x80, 0xC6};
+static const unsigned char p_lv_13[] = {0x00, 0xC7};
+static const unsigned char s_lv_14[] = {0x74, 0x53, 0x33, 0x10};
+static const unsigned char p_lv_14[] = {0x58, 0x4D, 0x3A, 0x10};
+static const unsigned char s_lv_15[] = {0x80, 0xC6};
+static const unsigned char p_lv_15[] = {0x00, 0xC7};
+static const unsigned char s_lv_16[] = {0x38, 0xA2, 0x31, 0x10};
+static const unsigned char p_lv_16[] = {0xA8, 0x97, 0x31, 0x10};
+static const unsigned char s_lv_17[] = {0x80, 0xC6};
+static const unsigned char p_lv_17[] = {0x00, 0xC7};
+static const unsigned char s_lv_18[] = {0x74, 0x53, 0x33, 0x10};
+static const unsigned char p_lv_18[] = {0x58, 0x4D, 0x3A, 0x10};
+static const unsigned char s_lv_19[] = {0x80, 0xC6};
+static const unsigned char p_lv_19[] = {0x00, 0xC7};
 static const ProbeSite kSites[] = {
     {"engine.dll", "P4-10a", 0x0013FE13, 1, s_engine_0, p_engine_0, 0x0},
     {"engine.dll", "P4-10b", 0x0013FE8C, 1, s_engine_1, p_engine_1, 0x0},
@@ -194,6 +235,25 @@ static const ProbeSite kSites[] = {
     {"engine.dll", "P4-04", 0x00425AFE, 2, s_engine_43, p_engine_43, 0x0},
     {"engine.dll", "P4-04", 0x00425B02, 2, s_engine_44, p_engine_44, 0x0},
     {"engine.dll", "P4-04", 0x00425B06, 2, s_engine_45, p_engine_45, 0x0},
+    {"engine.dll", "LV-01", 0x000CE85F, 4, s_lv_01, p_lv_01, 0x1},
+    {"engine.dll", "LV-02", 0x000CE87B, 2, s_lv_02, p_lv_02, 0x0},
+    {"engine.dll", "LV-03", 0x000CE8F1, 2, s_lv_03, p_lv_03, 0x0},
+    {"engine.dll", "LV-04", 0x000CE95D, 2, s_lv_04, p_lv_04, 0x0},
+    {"engine.dll", "LV-05", 0x000CE9DA, 2, s_lv_05, p_lv_05, 0x0},
+    {"engine.dll", "LV-06", 0x000CEA45, 2, s_lv_06, p_lv_06, 0x0},
+    {"engine.dll", "LV-07", 0x000CEABD, 2, s_lv_07, p_lv_07, 0x0},
+    {"engine.dll", "LV-08", 0x000CEBCD, 2, s_lv_08, p_lv_08, 0x0},
+    {"engine.dll", "LV-09", 0x000CEBF3, 4, s_lv_09, p_lv_09, 0x1},
+    {"engine.dll", "LV-10", 0x000CEC0C, 2, s_lv_10, p_lv_10, 0x0},
+    {"engine.dll", "LV-11", 0x000CEC26, 4, s_lv_11, p_lv_11, 0x1},
+    {"engine.dll", "LV-12", 0x000CEC2E, 4, s_lv_12, p_lv_12, 0x1},
+    {"engine.dll", "LV-13", 0x000CEC4B, 2, s_lv_13, p_lv_13, 0x0},
+    {"engine.dll", "LV-14", 0x000CEC65, 4, s_lv_14, p_lv_14, 0x1},
+    {"engine.dll", "LV-15", 0x000CEC7E, 2, s_lv_15, p_lv_15, 0x0},
+    {"engine.dll", "LV-16", 0x000CEC92, 4, s_lv_16, p_lv_16, 0x1},
+    {"engine.dll", "LV-17", 0x000CECAB, 2, s_lv_17, p_lv_17, 0x0},
+    {"engine.dll", "LV-18", 0x000CECBF, 4, s_lv_18, p_lv_18, 0x1},
+    {"engine.dll", "LV-19", 0x000CECD8, 2, s_lv_19, p_lv_19, 0x0},
     {"server.dll", "P5-09a", 0x00280BA8, 4, s_server_0, p_server_0, 0x1},
     {"server.dll", "P5-09b", 0x00280BBD, 4, s_server_1, p_server_1, 0x1},
     {"server.dll", "P5-08", 0x00280BCA, 1, s_server_2, p_server_2, 0x0},

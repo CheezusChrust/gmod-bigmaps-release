@@ -141,6 +141,41 @@ static const unsigned char s67[] = {0x41, 0xC1, 0xE1, 0x14};
 static const unsigned char p67[] = {0x41, 0xC1, 0xE1, 0x13};
 static const unsigned char s68[] = {0x41, 0xC1, 0xF9, 0x14};
 static const unsigned char p68[] = {0x41, 0xC1, 0xF9, 0x13};
+// Leaf visualization (mat_leafvis): AddLeafPortals clips each leaf to a world box of +-MAX_COORD_INTEGER, compiled in
+// as 16384 immediates and loads of shared +-16384.0f literals. Immediates are widened in place; loads are redirected
+// to existing +-32768.0f literals (the shared literals stay untouched).
+static const unsigned char s_lv_01[] = {0x03, 0x6A, 0x2D, 0x00};
+static const unsigned char p_lv_01[] = {0xF1, 0x17, 0x2D, 0x00};
+static const unsigned char s_lv_02[] = {0x80, 0xC6};
+static const unsigned char p_lv_02[] = {0x00, 0xC7};
+static const unsigned char s_lv_03[] = {0x80, 0xC6};
+static const unsigned char p_lv_03[] = {0x00, 0xC7};
+static const unsigned char s_lv_04[] = {0x80, 0xC6};
+static const unsigned char p_lv_04[] = {0x00, 0xC7};
+static const unsigned char s_lv_05[] = {0xFE, 0x0A, 0x30, 0x00};
+static const unsigned char p_lv_05[] = {0xF8, 0x24, 0x2D, 0x00};
+static const unsigned char s_lv_06[] = {0x80, 0xC6};
+static const unsigned char p_lv_06[] = {0x00, 0xC7};
+static const unsigned char s_lv_07[] = {0x80, 0xC6};
+static const unsigned char p_lv_07[] = {0x00, 0xC7};
+static const unsigned char s_lv_08[] = {0x80, 0xC6};
+static const unsigned char p_lv_08[] = {0x00, 0xC7};
+static const unsigned char s_lv_09[] = {0x80, 0xC6};
+static const unsigned char p_lv_09[] = {0x00, 0xC7};
+static const unsigned char s_lv_10[] = {0x08, 0x08, 0x30, 0x00};
+static const unsigned char p_lv_10[] = {0x02, 0x22, 0x2D, 0x00};
+static const unsigned char s_lv_11[] = {0x80, 0xC6};
+static const unsigned char p_lv_11[] = {0x00, 0xC7};
+static const unsigned char s_lv_12[] = {0x80, 0xC6};
+static const unsigned char p_lv_12[] = {0x00, 0xC7};
+static const unsigned char s_lv_13[] = {0x80, 0xC6};
+static const unsigned char p_lv_13[] = {0x00, 0xC7};
+static const unsigned char s_lv_14[] = {0x80, 0xC6};
+static const unsigned char p_lv_14[] = {0x00, 0xC7};
+static const unsigned char s_lv_15[] = {0x4D, 0x05, 0x30, 0x00};
+static const unsigned char p_lv_15[] = {0x47, 0x1F, 0x2D, 0x00};
+static const unsigned char s_lv_16[] = {0x80, 0xC6};
+static const unsigned char p_lv_16[] = {0x00, 0xC7};
 static const ProbeSite kSites[] = {
     {"engine.dll", "P4-01", 0x002303AA, 8, s0, p0, 0},
     {"engine.dll", "P4-02", 0x002303B2, 8, s1, p1, 0},
@@ -211,6 +246,22 @@ static const ProbeSite kSites[] = {
     {"engine.dll", "sound-reader-12", 0x00211F80, 3, s66, p66, 0},
     {"engine.dll", "sound-reader-13", 0x00212062, 4, s67, p67, 0},
     {"engine.dll", "sound-reader-14", 0x00212066, 4, s68, p68, 0},
+    {"engine.dll", "LV-01", 0x000BFC41, 4, s_lv_01, p_lv_01, 0},
+    {"engine.dll", "LV-02", 0x000BFC54, 2, s_lv_02, p_lv_02, 0},
+    {"engine.dll", "LV-03", 0x000BFD1B, 2, s_lv_03, p_lv_03, 0},
+    {"engine.dll", "LV-04", 0x000BFDEC, 2, s_lv_04, p_lv_04, 0},
+    {"engine.dll", "LV-05", 0x000BFE92, 4, s_lv_05, p_lv_05, 0},
+    {"engine.dll", "LV-06", 0x000BFEAE, 2, s_lv_06, p_lv_06, 0},
+    {"engine.dll", "LV-07", 0x000BFF75, 2, s_lv_07, p_lv_07, 0},
+    {"engine.dll", "LV-08", 0x000C0035, 2, s_lv_08, p_lv_08, 0},
+    {"engine.dll", "LV-09", 0x000C00EE, 2, s_lv_09, p_lv_09, 0},
+    {"engine.dll", "LV-10", 0x000C0188, 4, s_lv_10, p_lv_10, 0},
+    {"engine.dll", "LV-11", 0x000C01A4, 2, s_lv_11, p_lv_11, 0},
+    {"engine.dll", "LV-12", 0x000C0258, 2, s_lv_12, p_lv_12, 0},
+    {"engine.dll", "LV-13", 0x000C0301, 2, s_lv_13, p_lv_13, 0},
+    {"engine.dll", "LV-14", 0x000C03B8, 2, s_lv_14, p_lv_14, 0},
+    {"engine.dll", "LV-15", 0x000C0443, 4, s_lv_15, p_lv_15, 0},
+    {"engine.dll", "LV-16", 0x000C045F, 2, s_lv_16, p_lv_16, 0},
 };
 static const ProbeFile kFiles[] = {
     {"engine.dll", "6432F6538429F8D0C50ADC6E9BD7669F60E517CCE157A25B9E1DF34F7696CEA8", "", 0x180000000ull},
