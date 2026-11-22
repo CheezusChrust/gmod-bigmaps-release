@@ -27,6 +27,11 @@ multiplayer or dedicated-server behavior. The earlier detailed single-player
 results apply only to build 26439081. See [the port analysis](../docs/X86_64_PORT_ANALYSIS.md)
 for hashes, evidence and remaining coverage gaps.
 
+The module also hooks the Lua enum function in `server.dll` and `client.dll` (RVAs 0x104750 and
+0x8B0F0 for this build) to set `MIN_COORD_FLOAT` and `MAX_COORD_FLOAT` in every Lua state before
+any addon runs (-16384/16384 on normal maps, -32768/32768 on oversized ones). The public-branch
+module's `-usegh` dedicated-server mode is not part of this game-only module.
+
 Before installing another version, preserve the current module and close the
 game. Do not mix this branch module with the public-branch module. The reported
 test covered `bm_features` and a small-large-small transition cycle; movement,

@@ -246,5 +246,18 @@ const FsProvider kFsProviders[] = {
     {"filesystem_stdio.dll", "ED28870DCDB75817B0F81F83835550B69CA204D98B06BDF7017CDDBDFFC2017F", 0, 0x000AFB88,
      {0x000205D0, 0x00024980, 0x0001ECA0, 0x00014630, 0x00022BB0}},
 };
+// ---- Lua enum function hooks (server.dll, client.dll; lua_enums.h) ----
+// The function that fills a Lua state's global table with the Source enums (found through the "MAX_EDICT_BITS"
+// string; GMod's LuaGameEnums::InitLibraries). Hooked at its entry so MIN_COORD_FLOAT / MAX_COORD_FLOAT can be set
+// after GMod's own values, before any addon code runs. Prologues are verified before use.
+//   signature (this, ILuaBase* lua); lua->vtable[kLuaGlobalSlot]() returns the global-table object g;
+//   g->vtable[kLuaSetDoubleSlot](g, name, double) is SetMemberDouble.
+static const unsigned char a_enums[] = {0x48, 0x8B, 0xC4, 0x48, 0x89, 0x58, 0x08, 0x48, 0x89, 0x70, 0x10, 0x57, 0x48, 0x81, 0xEC, 0xC0, 0x00, 0x00, 0x00};
+static const ProbeSite kEnumHooks[] = {
+    {"server.dll", "enums", 0x00104750, 19, a_enums, a_enums, 0},
+    {"client.dll", "enums", 0x0008B0F0, 19, a_enums, a_enums, 0},
+};
+static const unsigned kLuaGlobalSlot = 0x1D0;
+static const unsigned kLuaSetDoubleSlot = 0x1A8;
 const MapExtentsVar kMapExtents = {0x00A36410, 0x006E6078, 0x006E606C, 0x18, 0x38, 0x40, 0x48, 0x50, 0x54, 0x58};
 }

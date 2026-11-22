@@ -10,14 +10,15 @@
 #pragma once
 
 #include "patcher.h"
+#include "../common/emitter.h"
 #include "client_hook_replay.h"
-
-#include <initializer_list>
 
 namespace
 {
 
 bool g_hooked = false;
+
+bool InstallEnumHooks();  // lua_enums.h
 
 // Checks the named map and switches the state to match; an unreadable map keeps the current state.
 void SwitchForMap(const char* level, const char* via)
@@ -51,15 +52,6 @@ void __cdecl OnClientNew(const unsigned char* self)
     level[sizeof(level) - 1] = 0;
     SwitchForMap(level, "joining server");
 }
-
-// Appends machine code to a buffer.
-struct Emitter
-{
-    unsigned char* p;
-    void Bytes(std::initializer_list<unsigned char> b) { for (unsigned char c : b) *p++ = c; }
-    void Raw(const void* src, size_t n) { memcpy(p, src, n); p += n; }
-    template <typename T> void Value(T v) { memcpy(p, &v, sizeof(v)); p += sizeof(v); }
-};
 
 // Builds the stub for one hook at `stub`; returns its size. The stub preserves the hooked function's argument
 // registers, calls `callback`, then runs the saved prologue and jumps back to target + prologue length.
@@ -187,6 +179,8 @@ void OpenGameMode()
     GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
                        reinterpret_cast<LPCSTR>(&OnSpawn), &self);
     g_hooked = InstallHooks(plan.mod[MOD_ENGINE]);
+    SetCoordLimits(plan.AllPatched());
+    InstallEnumHooks();
     Out("[bigmaps] %s; currently %s\n", g_hooked ? "game mode active: switching at each map load" : "hooks NOT installed",
         plan.AllPatched() ? "patched" : "stock");
 }

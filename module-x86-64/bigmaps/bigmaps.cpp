@@ -11,6 +11,7 @@ bool g_gameMode = false;  // loaded in the game (no dedicated-server module pres
 
 #ifdef _WIN32
 #include "game_hooks_win.h"
+#include "lua_enums.h"
 #else
 namespace
 {

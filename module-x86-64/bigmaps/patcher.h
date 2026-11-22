@@ -28,6 +28,16 @@ using namespace bm;
 // The engine file system used for map checks; set once everything verified.
 IFsBase* g_fs = nullptr;
 
+// MIN_COORD_FLOAT / MAX_COORD_FLOAT as written into the Lua enums by the hook in lua_enums.h: +-16384 for
+// stock, +-32768 while the large-map state is applied. Read by the hook stubs on every call.
+double g_coord[2] = {-kStockExtent, kStockExtent};
+
+void SetCoordLimits(bool large)
+{
+    g_coord[1] = large ? kLargeExtent : kStockExtent;
+    g_coord[0] = -g_coord[1];
+}
+
 // Patched modules; all three are required in the Windows game.
 #ifdef _WIN32
 const char* const kModules[] = {"engine.dll", "server.dll", "client.dll"};
@@ -315,6 +325,7 @@ void SwitchState(bool large)
     {
         Out("[bigmaps] already %s: nothing to write\n", large ? "patched" : "stock");
         SyncMapExtents(large);
+        SetCoordLimits(large);
         return;
     }
     int sites = large ? plan.sitesStock : plan.sitesPatched;
@@ -326,7 +337,10 @@ void SwitchState(bool large)
         ok && !failed ? (large ? "APPLIED" : "UNLOADED") : "FAILED", sites, props, failed,
         ok ? (large ? "all patched" : "all stock") : "NOT complete");
     if (ok && !failed)
+    {
         SyncMapExtents(large);
+        SetCoordLimits(large);
+    }
 }
 
 const char* SizeVerdict(MapSize size)
