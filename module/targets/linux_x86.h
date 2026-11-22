@@ -172,6 +172,25 @@ static const unsigned kCrcFuncRva = 0x00135120;
 static const unsigned kCrcGlobalRva = 0x0037C660;
 static const unsigned kHostStateRva = 0x00380F00;
 
+// ---- Lua enum function hook (server_srv.so; lua_enums.h) ----
+// The function that fills a Lua state's global table with the Source enums (found through the "MAX_EDICT_BITS"
+// string; GMod's LuaGameEnums::InitLibraries). Hooked at its entry so MIN_COORD_FLOAT / MAX_COORD_FLOAT can be set
+// after GMod's own values, before any addon code runs. The prologue is verified before use.
+//   cdecl (this, ILuaBase* lua); lua->vtable[kLuaGlobalSlot](lua) returns the global-table object g;
+//   g->vtable[kLuaSetDoubleSlot](g, name, double) is SetMemberDouble.
+static const unsigned char a_enums[] = {0x55, 0x89, 0xE5, 0x57, 0x56};
+static const ProbeSite kEnumHooks[] = {
+    {"server_srv.so", "enums", 0x0071CB10, 5, a_enums, a_enums, 0x0},
+};
+static const unsigned kLuaGlobalSlot = 0xE8;
+static const unsigned kLuaSetDoubleSlot = 0xD4;
+
+// ---- Ghost-injection spawn hook (engine_srv.so; ghost.h) ----
+// CGameServer::SpawnServer(this, char* mapname, char* startspot), cdecl: every map spawn on the dedicated server
+// (first map, changelevel, map). Same role as the Windows `spawn` hook; mapname is the second stack argument.
+static const unsigned char a_spawn[] = {0x55, 0x89, 0xE5, 0x57, 0x56};
+static const ProbeSite kSpawnHook = {"engine_srv.so", "spawn", 0x001DE5F0, 5, a_spawn, a_spawn, 0x0};
+
 // ---- SendProp / SendTable field offsets in server_srv.so ----
 // GCC build with the same 32-bit layout as Windows x86 (SendPropFloat, SendTable::Construct; LINUX_PORT.md).
 const size_t kPropBits = 0x0C, kPropLow = 0x10, kPropHigh = 0x14, kPropVarName = 0x30, kPropHLMul = 0x34,

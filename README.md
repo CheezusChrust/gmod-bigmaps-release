@@ -24,6 +24,16 @@ This module will not work on Linux clients (too lazy to set up a linux client), 
 require("bigmaps")
 ```
 
+With this method the server must start on a normal-sized map; use `changelevel` to reach an oversized one.
+
+#### Oversized first map (`-usegh`, experimental; Windows and Linux 32-bit dedicated servers)
+To start directly on an oversized map, load the module before the engine instead of from Lua:
+1. Copy the module for your server (`gmsv_bigmaps_win32.dll`, `gmsv_bigmaps_win64.dll` or `gmsv_bigmaps_linux.dll`) to the server's main directory (next to `srcds.exe` / `srcds_win64.exe` / `srcds_linux`) as `ghostinj.dll`. If you run HolyLib (Linux), its `ghostinj.dll` is already there: name ours `ghostinj2.dll` instead and HolyLib will load it. The module must match the server executable's architecture.
+2. Add `-usegh` to the server's startup parameters.
+3. Do not create the `bigmaps.lua` autorun above (it is not needed, and a second copy would just report that it is inactive).
+
+The console should show `[bigmaps] ghostinj mode active`. Every map load, including the first, is then checked and switched automatically.
+
 ### Regular Players
 1. Place the relevant `bigmaps` module for your client in the `<gmod>/garrysmod/lua/bin/` directory. If bin doesn't exist, create it.
 2. Navigate to `<gmod>/garrysmod/lua/menu/menu.lua` and add the following line to the *very end of the file, on a new line:*

@@ -8,7 +8,7 @@ set -eu
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 OUT="$ROOT/work/module/bigmaps/linux"
 mkdir -p "$OUT"
-g++ -m32 -std=c++14 -O2 -Wall -Wextra -Werror -fPIC -shared -fvisibility=hidden -fno-exceptions -fno-rtti \
+g++ -m32 -std=c++14 -O2 -Wall -Wextra -Werror -pthread -fPIC -shared -fvisibility=hidden -fno-exceptions -fno-rtti \
     -static-libgcc -Wl,--no-undefined -Wl,-z,defs \
     "$ROOT/module/bigmaps/bigmaps.cpp" -o "$OUT/gmsv_bigmaps_linux.dll" -ldl
 {

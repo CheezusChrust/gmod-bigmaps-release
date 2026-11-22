@@ -31,7 +31,12 @@ responsibility and build-specific data kept out of the platform logic:
 - [bigmaps.cpp](../module/bigmaps/bigmaps.cpp) contains the Lua module entry
   points. [patcher.h](../module/bigmaps/patcher.h) verifies and switches the
   patch state; [game_hooks_win.h](../module/bigmaps/game_hooks_win.h) contains
-  the Windows game-only hooks.
+  the Windows game-only hooks. [lua_enums.h](../module/bigmaps/lua_enums.h)
+  hooks the Lua enum function in `server.dll`/`client.dll` to set `MIN_COORD_FLOAT`
+  and `MAX_COORD_FLOAT` (Windows x86/x64 and the Linux x86 dedicated server).
+  [ghost.h](../module/bigmaps/ghost.h) is the Linux dedicated server's
+  `-usegh` mode: loaded as `ghostinj.dll` before the engine, a watcher thread installs
+  the enum hook and a `CGameServer::SpawnServer` hook so the first map can be oversized.
 
 Each build compiles `bigmaps.cpp`; the headers are intentionally split for
 review and maintenance, not linked as separate binaries.

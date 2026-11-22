@@ -8,6 +8,8 @@
 //                    checks, SendTable access, engine CRC / host state, map size check, console output
 //   patcher.h        verify and switch the patch state (what is changed and why: see there)
 //   game_hooks_win.h game process mode: engine hooks that switch before each map load (Windows only)
+//   ghost.h          dedicated server loaded early as ghostinj.dll (-usegh): switches before the first map
+//   lua_enums.h      hooks the Lua enum function (server/client module) to set MIN/MAX_COORD_FLOAT
 //
 // Switching is automatic per map: a map with any world bound beyond +-16384 gets the patched state, any other map
 // the stock one. When that happens depends on the process (see the entry points below).
@@ -36,6 +38,8 @@ void OpenGameMode()
 
 }  // namespace
 #endif
+#include "lua_enums.h"
+#include "ghost.h"
 
 // Dedicated server (dedicated.dll / dedicated_srv.so loaded; server autorun require): only verifies and reports.
 // The change itself happens in gmod13_close.
@@ -43,6 +47,12 @@ void OpenGameMode()
 BM_EXPORT int gmod13_open(void* /*lua_State*/)
 {
     InitConsole();
+    if (GhostActive())  // the ghostinj copy of this module is active: it handles every map; see ghost.h
+    {
+        g_gameMode = true;  // gmod13_close does nothing
+        Out("[bigmaps] gmod13_open: ghostinj mode is active; this copy does nothing\n");
+        return 0;
+    }
     g_gameMode = GetModuleHandleA(kDedicated) == nullptr;
     Out("[bigmaps] gmod13_open: %s, experimental in-memory patcher (automatic per map, %s)\n",
 #ifdef _WIN32
@@ -68,6 +78,8 @@ BM_EXPORT int gmod13_open(void* /*lua_State*/)
         g_verified = false;
         return 0;
     }
+    SetCoordLimits(plan.AllPatched());
+    InstallEnumHooks();  // takes effect from the next Lua state created (the next map); this one has run already
     Out("[bigmaps] verified: sites stock=%d patched=%d; sendprops stock=%d patched=%d; SendTable CRC 0x%08X; %s\n",
         plan.sitesStock, plan.sitesPatched, plan.propsStock, plan.propsPatched, plan.crcStored,
         plan.AllPatched() ? "active" : "stock");

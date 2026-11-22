@@ -232,6 +232,20 @@ static const ProbeSite kHooks[] = {
 static const unsigned kClStateOff = 0x14C;
 static const unsigned kClLevelOff = 0x1C8;
 
+// ---- Lua enum function hooks (server.dll, client.dll; lua_enums_win.h) ----
+// The function that fills a Lua state's global table with the Source enums (found through the "MAX_EDICT_BITS"
+// string; GMod's LuaGameEnums::InitLibraries). Hooked at its entry so MIN_COORD_FLOAT / MAX_COORD_FLOAT can be set
+// after GMod's own values, before any addon code runs. Prologues are verified before use.
+//   signature (this, ILuaBase* lua); lua->vtable[kLuaGlobalSlot]() returns the global-table object g;
+//   g->vtable[kLuaSetDoubleSlot](g, name, double) is SetMemberDouble.
+static const unsigned char a_enums[] = {0x48, 0x8B, 0xC4, 0x48, 0x89, 0x58, 0x08, 0x48, 0x89, 0x70, 0x10, 0x57, 0x48, 0x81, 0xEC, 0xC0, 0x00, 0x00, 0x00};
+static const ProbeSite kEnumHooks[] = {
+    {"server.dll", "enums", 0x000FB350, 19, a_enums, a_enums, 0x0},
+    {"client.dll", "enums", 0x0008A0C0, 19, a_enums, a_enums, 0x0},
+};
+static const unsigned kLuaGlobalSlot = 0x1D0;
+static const unsigned kLuaSetDoubleSlot = 0x1A8;
+
 // ---- SendProp / SendTable field offsets in server.dll ----
 // Re-derived from the binaries (research PATCH_LOG, SendProp layout). kPropVarName follows the public SDK member
 // order and is cross-checked by FindSendTable's stride search; kPropFlags only bounds that search.

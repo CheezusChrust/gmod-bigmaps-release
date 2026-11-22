@@ -31,6 +31,22 @@ necessary. Back up any existing menu customizations before editing.
 3. Start the server on a **normal-sized map**, then use `changelevel` to load
    an oversized map. Server Lua loads too late to enable an oversized first map.
 
+### Oversized first map (ghostinj, experimental; Windows and Linux 32-bit)
+
+The steps above need a normal first map because server Lua loads too late. With the
+launcher's `-usegh` option the module can load before the engine instead:
+
+1. Copy the module for your server (`gmsv_bigmaps_win32.dll`, `gmsv_bigmaps_win64.dll` or
+   `gmsv_bigmaps_linux.dll`; it must match the executable's architecture) to the server's
+   main directory (next to `srcds.exe`, `srcds_win64.exe` or `srcds_linux`) as
+   `ghostinj.dll`. If HolyLib's `ghostinj.dll` is already there (Linux), name ours
+   `ghostinj2.dll` instead; HolyLib's loads it.
+2. Add `-usegh` to the startup parameters. Do not install the autorun `bigmaps.lua`
+   (a second copy would just report that ghostinj mode is active and do nothing).
+3. Start the server on any map. The console shows `[bigmaps] ghostinj ...`, then
+   `enum hook installed` and `spawn hook installed` lines, then `ghostinj mode active`.
+   Every map load, including the first, is then checked and switched automatically.
+
 On an oversized map every client also needs the module. An incompatible client
 may be rejected with `Server uses different class tables`. The module restores
 normal behavior for normal maps.
